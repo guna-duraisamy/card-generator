@@ -1,1 +1,192 @@
 
+:root {
+    --card-w: 326px;
+    --card-h: 204px;
+    --border: #111;
+    --muted: #444;
+    --accent: #0b5cff;
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    font-family: Arial;
+    margin: 0;
+    background: #0b0f14;
+    color: #000000;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    background: #0b0f14;
+    border-bottom: 1px solid #1f2937;
+    z-index: 5
+}
+
+header .wrap {
+    max-width: 1100px;
+    margin: auto;
+    padding: 14px 16px;
+    display: flex;
+    gap: 12px;
+    align-items: center
+}
+
+header h1 {
+    font-size: 18px;
+    color: #e5e7eb;
+    margin: 0;
+    font-weight: 600
+}
+
+main {
+    margin: 0 auto;
+    padding: 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px
+}
+
+@media (max-width:960px) {
+    main {
+        grid-template-columns: 1fr
+    }
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.card-section {
+    padding: 5px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.panel {
+    background: #0f172a;
+    border: 1px solid #1f2937;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .35)
+}
+
+.panel h2 {
+    margin: 0;
+    padding: 14px 16px;
+    border-bottom: 1px solid #1f2937;
+    color: #e5e7eb;
+    font-size: 16px
+}
+
+.panel h6 {
+    margin: 0;
+    color: #e5e7eb;
+    font-size: 10px
+}
+
+form {
+    padding: 14px 14px 6px 14px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px
+}
+
+label {
+    display: block;
+    font-size: 12px;
+    color: #9ca3af;
+    margin-bottom: 4px
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #334155;
+    background: #0b1220;
+    border-radius: 10px;
+    color: #e5e7eb
+}
+
+textarea {
+    resize: vertical;
+    min-height: 64px
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 14px 16px 14px
+}
+
+button {
+    appearance: none;
+    border: none;
+    background: var(--accent);
+    color: white;
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-weight: 600;
+    cursor: pointer
+}
+
+button.sec {
+    background: #111827;
+    color: #e5e7eb;
+    border: 1px solid #374151
+}
+
+.stage {
+    display: grid;
+    grid-template-columns: repeat(2, var(--card-w));
+    gap: 16px;
+    justify-content: start;
+    overflow: auto;
+    padding: 16px
+}
+
+.card {
+    width: var(--card-w);
+    height: var(--card-h);
+    position: relative;
+    color: #000;
+    background: white;
+    overflow: hidden
+}
+
+
+/* #pfront {
+    background-image: url(pfbg.jpeg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#pback {
+    background-image: url(pbbg.jpeg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#sfront {
+    background-image: url(sfbg.jpeg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#sback {
+    background-image: url(sbbg.jpeg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+} */
