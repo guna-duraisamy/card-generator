@@ -160,10 +160,18 @@ button.sec:hover {
     display: grid;
     grid-template-columns: repeat(2, 326px);
     gap: 16px;
-    justify-content: start;
+    justify-content: center;
     overflow: auto;
     padding: 16px;
 }
+
+@media (max-width: 768px) {
+    .stage {
+        grid-template-columns: 326px; 
+        justify-content: center;  
+    }
+}
+
 
 .card {
     width: 326px;
