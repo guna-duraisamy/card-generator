@@ -1,1 +1,658 @@
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vehicle Card Generator (86mm × 54mm)</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="main.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Vehicle Smart Card – Form ➜ Front & Back (86mm × 54mm)</h1>
+    </div>
+  </header>
+  <main>
+    <section class="panel" aria-label="Input form">
+      <h2>Card Details</h2>
+      <form id="cardForm">
+        <div class="card-container">
+          <div class="card-section">
+            <h6>Front Side Card</h6>
+            <div class="form-grid">
+              <div>
+                <label>Fuel</label>
+                <input name="fuel" value="DIESEL" />
+              </div>
+              <div>
+                <label>Emission Norms</label>
+                <input name="emissionNorms" value="Not Available" />
+              </div>
+              <div>
+                <label>Regn. Number</label>
+                <input name="registerNo" value="TN91Y5078" required />
+              </div>
+              <div>
+                <label>Date of Regn.</label>
+                <input name="registerDate" value="17-11-2008" />
+              </div>
+              <div>
+                <label>Regn. Validity</label>
+                <input name="validDate" value="16-11-2028" />
+              </div>
+              <div>
+                <label>Chassis Number</label>
+                <input name="chassisNo" value="MAJBXXMRJB8Y40052" />
+              </div>
+              <div>
+                <label>Owner Serial / No.</label>
+                <input name="ownerSerial" value="3" />
+              </div>
+              <div>
+                <label>Engine/Motor Number</label>
+                <input name="engineNo" value="8Y40052" />
+              </div>
+              <div>
+                <label>Owner Name</label>
+                <input name="ownerName" value="VIJAYAN V" />
+              </div>
+              <div>
+                <label>Card Issue Date</label>
+                <input name="cardIssueDate" value="07-11-2023" />
+              </div>
+            </div>
+            <div>
+              <label>Son/Wife/Daughter of(In case of Individual Owner)</label>
+              <input name="guardian" value="VELAYUDHAM" />
+            </div>
+            <div>
+              <label>Address</label>
+              <textarea
+                name="address">NO 348, NORTH STREET, KOVILVENNI, KOVILVENNI BAZAAR, THIRUVARUR, Tamil Nadu 614403</textarea>
+            </div>
+            <div>
+              <label>Upload QR (square)</label>
+              <input type="file" accept="image/*" id="qrInput" />
+            </div>
+            <div>
+              <label>Upload Signature (transparent PNG preferred)</label>
+              <input type="file" accept="image/*" id="signInput" />
+            </div>
+          </div>
+          <div class="card-section">
+            <h6>Back Side Card</h6>
+            <div class="form-grid">
+              <div>
+                <label>Month-Year of Mfg.</label>
+                <input name="manufactureDate" value="04/2023" />
+              </div>
+              <div>
+                <label>Number of Cylinders</label>
+                <input name="cylinderCount" value="1" />
+              </div>
+              <div>
+                <label>Number of Axle</label>
+                <input name="axleCount" value="1" />
+              </div>
+              <div>
+                <label>Vehicle Class</label>
+                <input name="vehicleClass" value="M-Cycle/Scooter(2WN)" />
+              </div>
+              <div>
+                <label>Make's Name</label>
+                <input name="makesName" value="BAJAJ AUTO LTD" />
+              </div>
+              <div>
+                <label>Model Name</label>
+                <input name="modelName" value="PULSAR NS 200" />
+              </div>
+              <div>
+                <label>Colour</label>
+                <input name="colour" value="PEARL METALLIC WHITE" />
+              </div>
+              <div>
+                <label>BodyType</label>
+                <input name="bodyType" value="SOLO WITH PILLION" />
+              </div>
+              <div>
+                <label>Seating(in all)</label>
+                <input name="seatingAll" value="2" />
+              </div>
+              <div>
+                <label>Standing</label>
+                <input name="standing" value="0" />
+              </div>
+              <div>
+                <label>Sleeper Capacity</label>
+                <input name="sleeperCapacity" value="0" />
+              </div>
+              <div>
+                <label>Unladen</label>
+                <input name="unLaden" value="158" />
+              </div>
+              <div>
+                <label>Laden</label>
+                <input name="laden" value="308" />
+              </div>
+              <div>
+                <label>Gross Combination Weight(kg)</label>
+                <input name="grossCombinationWeight" value="0" />
+              </div>
+              <div>
+                <label>Cubic Capacity</label>
+                <input name="cubicCapacity" value="199" />
+              </div>
+              <div>
+                <label>Horse Power (BPH/Kw)</label>
+                <input name="horsePower" value="10.7" />
+              </div>
+              <div>
+                <label>Wheel Base(mm)</label>
+                <input name="wheelBase" value="1363" />
+              </div>
+              <div>
+                <label>Financer Name</label>
+                <input name="financerName" value="BALAJ FINANCE LTD" />
+              </div>
+              <div>
+                <label>Registration Authority</label>
+                <input name="registerationAuthority" value="TN61 ARIYALUR RTO" />
+              </div>
+              <div>
+                <label>Tax Paid Upto</label>
+                <input name="tax" value="LIFE TIME" />
+              </div>
+              <div>
+                <label>Transaction</label>
+                <input name="transaction" value="HPT/TO" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="actions">
+          <button type="button" onclick="handleGenerate()">Generate Cards</button>
+          <button type="button" class="sec" onclick="downloadPrimaryImages()">Download Primary Card</button>
+          <button type="button" class="sec" onclick="downloadSecondaryImages()">Download Secondary Card</button>
+        </div>
+      </form>
+    </section>
+    <section class="panel" aria-label="Preview">
+      <h2>Live Preview Primary Card (Front & Back)</h2>
+      <div class="stage">
+        <div class="card" id="pfront">
+          <div id="fuel" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-top: 154px;
+                        margin-left: 8px;
+                        ">
+          </div>
+          <div id="emissionNorms" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-top: 175px;
+                        margin-left: 8px;
+                        ">
+          </div>
+          <div id="registerFrontNo" style="
+                        position: absolute;
+                        font-size: 9px;
+                        font-weight: 800;
+                        margin-top: 51px;
+                        margin-left: 89px;
+                        ">
+          </div>
+          <div id="registerDate" style="
+                        position: absolute;
+                        font-size: 9px;
+                        font-weight: 800;
+                        margin-top: 51px;
+                        margin-left: 180px;
+                        ">
+          </div>
+          <div id="validDate" style="
+                        position: absolute;
+                        font-size: 9px;
+                        font-weight: 800;
+                        margin-top: 51px;
+                        margin-left: 260px;
+                        ">
+          </div>
+          <div id="chassisNo" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-top: 74px;
+                        margin-left: 89px;
+                        ">
+          </div>
+          <div id="ownerSerial" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-top: 70px;
+                        margin-left: 290px;
+                        ">
+          </div>
+          <div id="engineNo" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-top: 98px;
+                        margin-left: 89px;
+                        ">
+          </div>
+          <div id="ownerName" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-top: 124px;
+                        margin-left: 89px;
+                        ">
+          </div>
+          <div id="guardian" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-top: 150px;
+                        margin-left: 89px;
+                        ">
+          </div>
+          <div id="address" style="
+                        position: absolute;
+                        font-size: 7px;
+                        font-weight: 600;
+                        margin-top: 172px;
+                        margin-left: 89px;
+                        width: 150px;        
+                        white-space: normal;  
+                        word-wrap: break-word;
+                    ">
+          </div>
+          <div id="cardIssueDate" style="
+                        position: absolute;
+                        font-size: 7px;
+                        font-weight: 600;
+                        margin-top: 95px;
+                        margin-left: 316px;
+                        transform: rotate(-90deg); 
+                        transform-origin: left top; 
+                        white-space: nowrap;        
+                        ">
+          </div>
+        </div>
+        <div class="card" id="pback">
+          <div id="vehicleClass" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-top: 17px;
+                        margin-left: 140px;
+                        ">
+          </div>
+          <div id="registerBackNo" style="
+                        position: absolute;
+                        font-size: 9px;
+                        font-weight: 800;
+                        margin-left: 17px; 
+                        margin-top: 44px;">
+          </div>
+          <div id="qrBox" style="
+                        position: absolute;
+                        margin-left: 17px;
+                        margin-top: 59px;">
+          </div>
+          <div id="manufactureDate" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 17px; 
+                        margin-top: 131px;">
+          </div>
+          <div id="cylinderCount" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 17px; 
+                        margin-top: 150px;">
+          </div>
+          <div id="axleCount" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 17px; 
+                        margin-top: 167px;">
+          </div>
+          <div id="makesName" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 92px; 
+                        margin-top: 39px;">
+          </div>
+          <div id="modelName" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 92px; 
+                        margin-top: 58px;">
+          </div>
+          <div id="colour" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 92px; 
+                        margin-top: 75px;">
+          </div>
+          <div id="bodyType" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 92px; 
+                        margin-top: 94px;">
+          </div>
+          <div id="seatingAll" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 92px; 
+                        margin-top: 112px;">
+          </div>
+          <div id="standing" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 140px; 
+                        margin-top: 112px;">
+          </div>
+          <div id="sleeperCapacity" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 170px; 
+                        margin-top: 112px;">
+          </div>
+          <div id="unLaden" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 92px; 
+                        margin-top: 132px;">
+          </div>
+          <div id="laden" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 127px; 
+                        margin-top: 132px;">
+          </div>
+          <div id="grossCombinationWeight" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 160px; 
+                        margin-top: 132px;">
+          </div>
+          <div id="cubicCapacity" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 92px; 
+                        margin-top: 149px;">
+          </div>
+          <div id="horsePower" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 149px; 
+                        margin-top: 149px;">
+          </div>
+          <div id="wheelBase" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 224px; 
+                        margin-top: 149px;">
+          </div>
+          <div id="financerName" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 92px; 
+                        margin-top: 168px;">
+          </div>
+          <div id="signBox" style="
+                        position: absolute;
+                        margin-left: 240px; 
+                        margin-top: 165px;">
+          </div>
+          <div id="registerationAuthority" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 230px; 
+                        margin-top: 190px;">
+          </div>
+        </div>
+      </div>
+      <h2>Live Preview Secondary Card (Front & Back)</h2>
+
+      <div class="stage">
+        <div class="card" id="sfront">
+          <div id="sfuel" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 15px; 
+                        margin-top: 133px;">
+          </div>
+          <div id="sregisterFrontNo" style="
+                        position: absolute;
+                        font-size: 10px;
+                        font-weight: 800;
+                        margin-left: 98px; 
+                        margin-top: 44px;">
+          </div>
+          <div id="sregisterDate" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 226px; 
+                        margin-top: 44px;">
+          </div>
+          <div id="schassisNo" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 98px; 
+                        margin-top: 68px;">
+          </div>
+          <div id="svalidDate" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 250px; 
+                        margin-top: 68px;">
+          </div>
+
+          <div id="sengineNo" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 98px; 
+                        margin-top: 91px;">
+          </div>
+          <div id="sownerSerial" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 280px; 
+                        margin-top: 88px;">
+          </div>
+          <div id="sownerName" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 98px; 
+                        margin-top: 112px;">
+          </div>
+          <div id="sguardian" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 98px; 
+                        margin-top: 132px;">
+          </div>
+          <div id="saddress" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 98px; 
+                        margin-top: 162px;
+                        width: 150px;        
+                        white-space: normal;  
+                        word-wrap: break-word;">
+          </div>
+          <div id="sqrBox" style="
+                        position: absolute;
+                        margin-left: 251px;
+                        margin-top: 133px;">
+          </div>
+          <div id="stransaction" style="
+                      position: absolute;
+                      font-size: 7px;
+                      font-weight: 600;
+                      margin-left: 315px;
+                      margin-top: 130px;
+                      transform: rotate(-90deg); 
+                      transform-origin: left top; 
+                      white-space: nowrap;">
+          </div>
+        </div>
+
+        <div class="card" id="sback">
+          <div id="svehicleClass" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 103px; 
+                        margin-top: 20px;">
+          </div>
+          <div id="sregisterBackNo" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 18px; 
+                        margin-top: 42px;">
+          </div>
+          <div id="smakesName" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 95px; 
+                        margin-top: 42px;">
+          </div>
+          <div id="smanufactureDate" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 18px; 
+                        margin-top: 62px;">
+          </div>
+          <div id="smodelName" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 95px; 
+                        margin-top: 62px;">
+          </div>
+          <div id="swheelBase" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 18px; 
+                        margin-top: 82px;">
+          </div>
+          <div id="scolour" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 95px; 
+                        margin-top: 82px;">
+          </div>
+          <div id="scubicCapacity" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 18px; 
+                        margin-top: 102px;">
+          </div>
+          <div id="sbodyType" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 95px; 
+                        margin-top: 102px;">
+          </div>
+          <div id="scylinderCount" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 18px; 
+                        margin-top: 122px;">
+          </div>
+          <div id="sfinalseating" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 95px; 
+                        margin-top: 122px;">
+          </div>
+          <div id="sfinancerName" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 219px; 
+                        margin-top: 122px;">
+          </div>
+          <div id="sfinalladen" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 18px; 
+                        margin-top: 152px;">
+          </div>
+          <div id="stax" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 95px; 
+                        margin-top: 145px;">
+          </div>
+          <div id="ssignBox" style="
+                        position: absolute;
+                        margin-left: 230px; 
+                        margin-top: 167px;">
+          </div>
+          <div id="sregisterationAuthority" style="
+                        position: absolute;
+                        font-size: 8px;
+                        font-weight: 600;
+                        margin-left: 215px; 
+                        margin-top: 190px;">
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+</body>
+
+</html>
