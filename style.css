@@ -178,8 +178,6 @@ button.sec:hover {
     height: 204px;
     position: relative;
     background: white;
-    border: 1px solid #bae6fd;
-    box-shadow: 0 4px 10px rgba(56, 189, 248, 0.2);
     overflow: hidden;
 }
 
