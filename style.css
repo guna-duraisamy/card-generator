@@ -1,6 +1,4 @@
 :root {
-    --card-w: 326px;
-    --card-h: 204px;
     --border: #cce7ff;
     --muted: #3b82f6;
     --accent: #0284c7; /* deeper sky blue for buttons */
@@ -160,7 +158,7 @@ button.sec:hover {
 
 .stage {
     display: grid;
-    grid-template-columns: repeat(2, var(--card-w));
+    grid-template-columns: repeat(2, 326px);
     gap: 16px;
     justify-content: start;
     overflow: auto;
@@ -168,8 +166,8 @@ button.sec:hover {
 }
 
 .card {
-    width: var(--card-w);
-    height: var(--card-h);
+    width: 326px;
+    height: 204px;
     position: relative;
     background: white;
     border: 1px solid #bae6fd;
