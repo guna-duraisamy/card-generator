@@ -83,6 +83,9 @@ main {
     }
 }
 
+.Preview {
+    background-color: #f0f9ff;
+}
 
 .panel {
     background: #ffffff;
