@@ -83,10 +83,6 @@ main {
     }
 }
 
-.Preview {
-    background-color: #f0f9ff;
-}
-
 .panel {
     background: #ffffff;
     border: 1px solid var(--border);
@@ -173,6 +169,7 @@ button.sec:hover {
 }
 
 .stage {
+    background-color: #f0f9ff;
     display: grid;
     grid-template-columns: repeat(2, 326px);
     gap: 16px;
