@@ -2,13 +2,25 @@ const $ = (sel, root = document) => root.querySelector(sel);
 
 async function handleReset() {
     const f = document.forms.cardForm;
-    f.reset();
+
+    [...f.elements].forEach(el => {
+        if (el.tagName === "INPUT" || el.tagName === "TEXTAREA" || el.tagName === "SELECT") {
+            el.value = "";
+        }
+    });
+
+    document.querySelectorAll("#pfront span, #pback span, #sfront span, #sback span")
+        .forEach(el => el.textContent = "");
+
+    $('#qrInput').value = "";
+    $('#signInput').value = "";
 
     $('#qrBox').innerHTML = "";
     $('#signBox').innerHTML = "";
     $('#sqrBox').innerHTML = "";
     $('#ssignBox').innerHTML = "";
 }
+
 
 async function handleGenerate() {
     const f = document.forms.cardForm;
