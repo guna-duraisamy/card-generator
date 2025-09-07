@@ -15,6 +15,79 @@ async function handleReset() {
     $('#qrInput').value = "";
     $('#signInput').value = "";
 
+    // Primary Card
+    // FRONT
+    $('#registerFrontNo').textContent = "";
+    $('#fuel').textContent = "";
+    $('#emissionNorms').textContent = "";
+    $('#registerDate').textContent = "";
+    $('#validDate').textContent = "";
+    $('#chassisNo').textContent = "";
+    $('#ownerSerial').textContent = "";
+    $('#engineNo').textContent = "";
+    $('#ownerName').textContent = "";
+    $('#cardIssueDate').textContent = "";
+    $('#guardian').textContent = "";
+    $('#address').textContent = "";
+
+    // BACK
+    $('#registerBackNo').textContent = "";
+    $('#vehicleClass').textContent = "";
+    $('#manufactureDate').textContent = "";
+    $('#cylinderCount').textContent = "";
+    $('#axleCount').textContent = "";
+    $('#makesName').textContent = "";
+    $('#modelName').textContent = "";
+    $('#colour').textContent = "";
+    $('#bodyType').textContent = "";
+    $('#seatingAll').textContent = "";
+    $('#standing').textContent = "";
+    $('#sleeperCapacity').textContent = "";
+    $('#unLaden').textContent = "";
+    $('#laden').textContent = "";
+    $('#grossCombinationWeight').textContent = "";
+    $('#cubicCapacity').textContent = "";
+    $('#horsePower').textContent = "";
+    $('#wheelBase').textContent = "";
+    $('#financerName').textContent = "";
+    $('#registerationAuthority').textContent = "";
+
+
+     // Secondary Card
+    // FRONT
+    $('#sfuel').textContent = "";
+    $('#sregisterFrontNo').textContent = "";
+    $('#sregisterDate').textContent = "";
+    $('#schassisNo').textContent = "";
+    $('#svalidDate').textContent = "";
+    $('#sengineNo').textContent = "";
+    $('#sownerSerial').textContent = "";
+    $('#sownerName').textContent = "";
+    $('#sguardian').textContent = "";
+    $('#saddress').textContent = "";
+    $('#stransaction').textContent = "";
+
+    // BACK
+    $('#svehicleClass').textContent = "";
+    $('#sregisterBackNo').textContent = "";
+    $('#smakesName').textContent = "";
+    $('#smanufactureDate').textContent = "";
+    $('#smodelName').textContent = "";
+    $('#swheelBase').textContent = "";
+    $('#scolour').textContent = "";
+    $('#scubicCapacity').textContent = "";
+    $('#sbodyType').textContent = "";
+    $('#scylinderCount').textContent = "";
+
+    $('#sfinalseating').textContent = "";
+
+    $('#sfinancerName').textContent = "";
+
+    $('#sfinalladen').textContent = "";
+
+    $('#stax').textContent = "";
+    $('#sregisterationAuthority').textContent = "";
+    
     $('#qrBox').innerHTML = "";
     $('#signBox').innerHTML = "";
     $('#sqrBox').innerHTML = "";
