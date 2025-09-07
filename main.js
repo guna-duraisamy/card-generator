@@ -46,7 +46,7 @@ async function handleGenerate() {
         const url = await fileToDataURL(qrFile);
         $('#qrBox').innerHTML = `<img alt="QR" src="${url}" style="width: 62px; height: 62px; object-fit: cover;"/>`;
     } else {
-        $('#qrBox').innerHTML = `<img alt="QR Placeholder" src="qr.webp" style="width: 62px; height: 62px; object-fit: cover;"/>`;
+        // $('#qrBox').innerHTML = `<img alt="QR Placeholder" src="qr.webp" style="width: 62px; height: 62px; object-fit: cover;"/>`;
     }
 
     const signFile = $('#signInput').files[0];
