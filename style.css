@@ -158,6 +158,23 @@ button:hover {
     transform: translateY(-1px);
 }
 
+button.reset {
+    background: #dc2626; 
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+button.reset:hover {
+    background: #b91c1c; 
+    transform: translateY(-1px);
+}
+
+
 button.sec {
     background: #e0f2fe;
     color: #0369a1;
