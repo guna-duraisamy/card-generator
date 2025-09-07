@@ -3,8 +3,7 @@ const $ = (sel, root = document) => root.querySelector(sel);
 async function handleReset() {
     const f = document.forms.cardForm;
     f.reset();
-    document.querySelectorAll("#pfront span, #pback span, #sfront span, #sback span")
-        .forEach(el => el.textContent = "");
+
     $('#qrBox').innerHTML = "";
     $('#signBox').innerHTML = "";
     $('#sqrBox').innerHTML = "";
@@ -109,7 +108,7 @@ async function handleGenerate() {
         const url = await fileToDataURL(sqrFile);
         $('#sqrBox').innerHTML = `<img alt="QR" src="${url}" style="width: 53px; height: 53px; object-fit: cover;"/>`;
     } else {
-        $('#sqrBox').innerHTML = `<img alt="QR Placeholder" src="qr.webp" style="width: 53px; height: 53px; object-fit: cover;"/>`;
+        // $('#sqrBox').innerHTML = `<img alt="QR Placeholder" src="qr.webp" style="width: 53px; height: 53px; object-fit: cover;"/>`;
     }
     const ssignFile = $('#signInput').files[0];
     if (ssignFile) {
