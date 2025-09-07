@@ -1,5 +1,16 @@
 const $ = (sel, root = document) => root.querySelector(sel);
 
+async function handleReset() {
+    const f = document.forms.cardForm;
+    f.reset();
+    document.querySelectorAll("#pfront span, #pback span, #sfront span, #sback span")
+        .forEach(el => el.textContent = "");
+    $('#qrBox').innerHTML = "";
+    $('#signBox').innerHTML = "";
+    $('#sqrBox').innerHTML = "";
+    $('#ssignBox').innerHTML = "";
+}
+
 async function handleGenerate() {
     const f = document.forms.cardForm;
 
