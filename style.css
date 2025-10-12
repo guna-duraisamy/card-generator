@@ -1,16 +1,23 @@
 :root {
     --border: #cce7ff;
     --muted: #3b82f6;
-    --accent: #0284c7; /* deeper sky blue for buttons */
-    --bg-sky: #e0f2fe; /* light sky background */
+    --accent: #0284c7; 
+    --bg-sky: #e0f2fe;
 }
+
+@font-face {
+    font-family: "Inter";
+    src: url("Inter.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}  
 
 * {
     box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Inter", sans-serif;
     margin: 0;
     background: var(--bg-sky);
     color: #0f172a;
