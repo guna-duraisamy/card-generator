@@ -126,8 +126,7 @@ label {
 }
 
 input,
-textarea,
-select {
+textarea {
     width: 100%;
     padding: 10px 12px;
     border: 1px solid #bae6fd;
@@ -241,3 +240,8 @@ button.sec:hover {
     background-repeat: no-repeat;
     background-size: 100% 100%;
 } */
+.actions select {
+    width: auto;
+    padding: 10px 14px;
+    border-radius: 12px;
+}
