@@ -219,6 +219,7 @@ async function captureTransparent(el, filenameBase) {
 
     const oldBg = el.style.background;
     el.style.background = "transparent";
+    el.style.filter = "contrast(1.1)";
 
     // Increase scale for print quality
     const canvas = await html2canvas(el, {
