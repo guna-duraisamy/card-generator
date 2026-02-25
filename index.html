@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Vehicle Card Generator (86mm × 54mm)</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://unpkg.com/utif@3.0.0/UTIF.min.js"></script>
   <script src="main.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -177,6 +178,11 @@
         <div class="actions">
           <button type="button" onclick="handleGenerate()">Generate Cards</button>
           <button type="button" class="reset" onclick="handleReset()">Reset Cards</button>
+          <select id="exportFormat">
+            <option value="png">PNG (High Quality)</option>
+            <option value="jpeg">JPEG</option>
+            <option value="tiff">TIFF (Print Ready)</option>
+          </select>
           <button type="button" class="sec" onclick="downloadPrimaryImages()">Download Primary Card</button>
           <button type="button" class="sec" onclick="downloadSecondaryImages()">Download Secondary Card</button>
         </div>

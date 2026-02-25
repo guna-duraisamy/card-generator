@@ -214,20 +214,56 @@ function fileToDataURL(file) {
 window.addEventListener('DOMContentLoaded', handleGenerate);
 
 // helper: capture with transparent background
-async function captureTransparent(el, filename) {
-    const oldBg = el.style.background;   // save old background (white)
-    el.style.background = "transparent"; // force transparent for capture
+async function captureTransparent(el, filenameBase) {
+    const format = document.getElementById("exportFormat").value;
 
-    const canvas = await html2canvas(el, { scale: 3, backgroundColor: null });
+    const oldBg = el.style.background;
+    el.style.background = "transparent";
 
-    el.style.background = oldBg; // restore old background (white)
+    // Increase scale for print quality
+    const canvas = await html2canvas(el, {
+        scale: 6,                 // 👈 much higher resolution
+        backgroundColor: null,
+        useCORS: true
+    });
+
+    el.style.background = oldBg;
+
+    if (format === "png") {
+        downloadBlob(canvas.toDataURL("image/png"), filenameBase + ".png");
+    }
+
+    else if (format === "jpeg") {
+        downloadBlob(canvas.toDataURL("image/jpeg", 1.0), filenameBase + ".jpg");
+    }
+
+    else if (format === "tiff") {
+        exportTIFF(canvas, filenameBase + ".tiff");
+    }
+}
+function exportTIFF(canvas, filename) {
+    const ctx = canvas.getContext("2d");
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+    const tiffData = UTIF.encodeImage(
+        imageData.data,
+        canvas.width,
+        canvas.height
+    );
+
+    const blob = new Blob([tiffData], { type: "image/tiff" });
 
     const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
     link.download = filename;
-    link.href = canvas.toDataURL("image/png");
     link.click();
 }
-
+function downloadBlob(dataURL, filename) {
+    const link = document.createElement("a");
+    link.download = filename;
+    link.href = dataURL;
+    link.click();
+}
 // --- Primary ---
 async function downloadPrimaryImages() {
     const f = document.forms.cardForm;
@@ -235,8 +271,8 @@ async function downloadPrimaryImages() {
     const pfront = document.getElementById("pfront");
     const pback = document.getElementById("pback");
 
-    await captureTransparent(pfront, f.registerNo.value.trim() + "_primary_front_card.png");
-    await captureTransparent(pback, f.registerNo.value.trim() + "_primary_back_card.png");
+    await captureTransparent(pfront, f.registerNo.value.trim() + "_primary_front_card");
+    await captureTransparent(pback, f.registerNo.value.trim() + "_primary_back_card");
 }
 
 // --- Secondary ---
@@ -246,6 +282,6 @@ async function downloadSecondaryImages() {
     const sfront = document.getElementById("sfront");
     const sback = document.getElementById("sback");
 
-    await captureTransparent(sfront, f.registerNo.value.trim() + "_secondary_front_card.png");
-    await captureTransparent(sback, f.registerNo.value.trim() + "_secondary_back_card.png");
+    await captureTransparent(sfront, f.registerNo.value.trim() + "_secondary_front_card");
+    await captureTransparent(sback, f.registerNo.value.trim() + "_secondary_back_card");
 }
