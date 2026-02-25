@@ -242,6 +242,12 @@ async function captureTransparent(el, filenameBase) {
     }
 }
 function exportTIFF(canvas, filename) {
+
+    if (typeof UTIF === "undefined") {
+        alert("TIFF library failed to load. Use local server.");
+        return;
+    }
+
     const ctx = canvas.getContext("2d");
     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
