@@ -218,6 +218,8 @@ async function captureTransparent(el, filenameBase) {
     const format = document.getElementById("exportFormat").value;
 
     const oldBg = el.style.background;
+    const oldFilter = el.style.filte
+
     el.style.background = "transparent";
     el.style.filter = "contrast(1.1)";
 
@@ -229,7 +231,8 @@ async function captureTransparent(el, filenameBase) {
     });
 
     el.style.background = oldBg;
-
+    el.style.filter = oldFilter;
+    
     if (format === "png") {
         downloadBlob(canvas.toDataURL("image/png"), filenameBase + ".png");
     }
